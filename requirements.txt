@@ -1,0 +1,8 @@
+python-dotenv
+pyttsx3
+SpeechRecognition
+openai
+screen-brightness-control
+pillow
+pyaudio
+pypiwin32
