@@ -1,11 +1,15 @@
 from skills.base import Skill
-import commands  # TEMPORARY
+import commands
+
 
 class MediaSkill(Skill):
 
     def can_handle(self, query: str) -> bool:
         q = query.lower()
-        return "play music" in q or "youtube" in q or "play song" in q
+        return any(
+            word in q
+            for word in ["play", "music", "song", "youtube"]
+        )
 
     def execute(self, query: str):
         q = query.lower()
