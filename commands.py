@@ -1,7 +1,9 @@
 from skills_manager import SkillManager
 import core
 
+
 skill_manager = SkillManager()
+
 
 def handle_query(query: str):
     if not query:
@@ -19,8 +21,11 @@ def handle_query(query: str):
     if handled:
         return "ok"
 
+    print("No skill matched for:", q)
+
     # fallback AI (unchanged)
     core.say("Let me think about that, sir.")
     answer = core.ai(q)
     core.say(answer)
+
     return "ok"
