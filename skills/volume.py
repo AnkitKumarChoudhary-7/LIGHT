@@ -1,11 +1,15 @@
 from skills.base import Skill
-import commands  # TEMPORARY (explained below)
+import commands 
+
 
 class VolumeSkill(Skill):
 
     def can_handle(self, query: str) -> bool:
         q = query.lower()
-        return "volume" in q or "mute" in q
+        return any(
+            word in q
+            for word in ["volume", "sound", "audio", "mute", "loud", "quiet"]
+        )
 
     def execute(self, query: str):
         q = query.lower()
