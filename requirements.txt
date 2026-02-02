@@ -6,3 +6,6 @@ screen-brightness-control
 pillow
 pyaudio
 pypiwin32
+pycaw
+pyautogui
+comtypes

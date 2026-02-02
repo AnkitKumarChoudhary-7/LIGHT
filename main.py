@@ -6,7 +6,14 @@ from PIL import Image, ImageTk, ImageDraw
 import os
 
 def show_assistant_avatar():
+    # Avatar path set to specific location
     gif_path = r"C:\Users\ANKIT\Downloads\LIGHT (2).gif"
+    
+    # Check if file exists, if not, skip avatar
+    if not os.path.exists(gif_path):
+        print(f"Avatar file not found: {gif_path}")
+        return
+        
     avatar_size = 250
     border_width = 4
     border_color = (255,255,255,255)
@@ -73,10 +80,19 @@ if __name__ == "__main__":
         print("Avatar error:", e)
 
     print("Light is now always listening. Say something...")
-    while True:
-        query = core.takeCommand()
-        if not query:
-            continue
-        status = commands.handle_query(query)
-        if status == "exit":
-            break
+    print("Press Ctrl+C to exit")
+    
+    try:
+        while True:
+            query = core.takeCommand()
+            if not query:
+                continue
+            status = commands.handle_query(query)
+            if status == "exit":
+                break
+    except KeyboardInterrupt:
+        print("\nShutting down Light...")
+        core.say("Goodbye sir. Shutting down.")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        core.say("Sorry sir, I encountered an error and need to shut down.")

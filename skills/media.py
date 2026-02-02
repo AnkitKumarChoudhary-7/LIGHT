@@ -1,5 +1,5 @@
 from skills.base import Skill
-import commands
+import core
 
 
 class MediaSkill(Skill):
@@ -15,6 +15,6 @@ class MediaSkill(Skill):
         q = query.lower()
 
         if "youtube" in q:
-            commands.play_youtube_song()
+            core.play_youtube_song()
         else:
-            commands.playMusic()
+            core.playMusic()
